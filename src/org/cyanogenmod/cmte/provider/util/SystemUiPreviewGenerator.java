@@ -61,6 +61,9 @@ public class SystemUiPreviewGenerator {
     private static final int HEADER_WIDTH = 1440;
     private static final int HEADER_HEIGHT = 300;
 
+    // Style used for tinting of wifi and signal icons
+    private static final String DUAL_TONE_LIGHT_THEME = "DualToneLightTheme";
+
     private Context mContext;
 
     public SystemUiPreviewGenerator(Context context) {
