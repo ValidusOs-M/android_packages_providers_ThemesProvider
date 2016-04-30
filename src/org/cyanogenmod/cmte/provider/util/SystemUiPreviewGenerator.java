@@ -56,8 +56,6 @@ public class SystemUiPreviewGenerator {
     private static final String STATUS_BAR_HEADER_MORNING = "notifhead_morning";
     private static final String STATUS_BAR_HEADER_NOON = "notifhead_noon";
     private static final String STATUS_BAR_HEADER_EVENING = "notifhead_sunset";
-    // Style used for tinting of wifi and signal icons
-    private static final String DUAL_TONE_LIGHT_THEME = "DualToneLightTheme";
     private static final int HEADER_WIDTH = 1440;
     private static final int HEADER_HEIGHT = 300;
 
