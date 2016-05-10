@@ -36,7 +36,7 @@ import android.util.Log;
 public class ThemesOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = ThemesOpenHelper.class.getName();
 
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 18;
     private static final String DATABASE_NAME = "themes.db";
     private static final String SYSTEM_THEME_PKG_NAME = ThemeConfig.SYSTEM_DEFAULT;
     private static final String OLD_SYSTEM_THEME_PKG_NAME = "holo";
@@ -123,6 +123,10 @@ public class ThemesOpenHelper extends SQLiteOpenHelper {
             if (oldVersion == 16) {
                 upgradeToVersion17(db);
                 oldVersion = 17;
+            }
+            if (oldVersion == 17) {
+                upgradeToVersion18(db);
+                oldVersion = 18;
             }
             if (oldVersion != DATABASE_VERSION) {
                 Log.e(TAG, "Recreating db because unknown database version: " + oldVersion);
@@ -440,6 +444,47 @@ public class ThemesOpenHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
+    private void upgradeToVersion18(SQLiteDatabase db) {
+        String sql = String.format("ALTER TABLE %s ADD COLUMN %s INTEGER",
+                ThemesTable.TABLE_NAME, ThemesColumns.MODIFIES_STATUSBAR_HEADERS);
+        db.execSQL(sql);
+
+        // we need to update any existing themes
+        final String[] projection = {
+            ThemesColumns.PKG_NAME
+        };
+        final String selection = ThemesColumns.MODIFIES_STATUS_BAR + "=?";
+        final String[] selectionArgs = {
+            "1"
+        };
+        final Cursor c = db.query(ThemesTable.TABLE_NAME, projection, selection, selectionArgs,
+                null, null, null);
+        if (c != null) {
+            while (c.moveToNext()) {
+                final String pkgName = c.getString(0);
+                boolean hasSystemUi = false;
+                try {
+                    Context themeContext = mContext.createPackageContext(pkgName, 0);
+                    hasSystemUi = ThemePackageHelper.hasThemeComponent(themeContext,
+                            ThemePackageHelper.sComponentToFolderName.get(
+                                    ThemesColumns.MODIFIES_STATUS_BAR));
+                } catch (PackageManager.NameNotFoundException e) {
+                    // default to false
+                }
+                if (hasSystemUi) {
+                    db.execSQL(String.format("UPDATE %s SET %s='1'", ThemesTable.TABLE_NAME,
+                            ThemesColumns.MODIFIES_STATUSBAR_HEADERS, ThemesColumns.PKG_NAME,
+                            pkgName));
+                    Intent intent = new Intent(mContext, PreviewGenerationService.class);
+                    intent.setAction(PreviewGenerationService.ACTION_INSERT);
+                    intent.putExtra(PreviewGenerationService.EXTRA_PKG_NAME, pkgName);
+                    mContext.startService(intent);
+                }
+            }
+            c.close();
+        }
+    }
+
     private void dropTables(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS " + ThemesTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + MixnMatchTable.TABLE_NAME);
@@ -477,6 +522,7 @@ public class ThemesOpenHelper extends SQLiteOpenHelper {
                         ThemesColumns.MODIFIES_OVERLAYS + " INTEGER DEFAULT 0, " +
                         ThemesColumns.MODIFIES_STATUS_BAR + " INTEGER DEFAULT 0, " +
                         ThemesColumns.MODIFIES_NAVIGATION_BAR + " INTEGER DEFAULT 0, " +
+                        ThemesColumns.MODIFIES_STATUSBAR_HEADERS + " INTEGER DEFAULT 0, " +
                         ThemesColumns.PRESENT_AS_THEME + " INTEGER DEFAULT 0, " +
                         ThemesColumns.IS_LEGACY_THEME + " INTEGER DEFAULT 0, " +
                         ThemesColumns.IS_DEFAULT_THEME + " INTEGER DEFAULT 0, " +
@@ -506,6 +552,7 @@ public class ThemesOpenHelper extends SQLiteOpenHelper {
             values.put(ThemesColumns.MODIFIES_RINGTONES, 1);
             values.put(ThemesColumns.MODIFIES_STATUS_BAR, 1);
             values.put(ThemesColumns.MODIFIES_NAVIGATION_BAR, 1);
+            values.put(ThemesColumns.MODIFIES_STATUSBAR_HEADERS, 1);
             values.put(ThemesColumns.PRESENT_AS_THEME, 1);
             values.put(ThemesColumns.IS_LEGACY_THEME, 0);
             values.put(ThemesColumns.IS_DEFAULT_THEME, isDefault);
@@ -569,6 +616,11 @@ public class ThemesOpenHelper extends SQLiteOpenHelper {
                 PreviewColumns.NAVBAR_HOME_BUTTON,
                 PreviewColumns.NAVBAR_RECENT_BUTTON,
                 PreviewColumns.NAVBAR_BACKGROUND
+        };
+        public static final String[] STATUSBAR_HEADERS_PREVIEW_KEYS = {
+                PreviewColumns.HEADER_PREVIEW_1,
+                PreviewColumns.HEADER_PREVIEW_2,
+                PreviewColumns.HEADER_PREVIEW_3
         };
         public static final String[] ICON_PREVIEW_KEYS = {
                 PreviewColumns.ICON_PREVIEW_1,
