@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider.util;
+package org.cyanogenmod.cmte.provider.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -21,7 +21,7 @@ import android.graphics.Bitmap;
 import android.os.UserHandle;
 import android.view.View;
 
-import org.cyanogenmod.themes.provider.R;
+import org.cyanogenmod.cmte.provider.R;
 
 public class StylePreviewGenerator {
     private Context mContext;

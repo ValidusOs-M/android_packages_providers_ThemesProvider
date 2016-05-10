@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider.util;
+package org.cyanogenmod.cmte.provider.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -27,9 +27,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.widget.FrameLayout;
-import org.cyanogenmod.themes.provider.view.BatteryMeterView;
+import org.cyanogenmod.cmte.provider.view.BatteryMeterView;
 
-import org.cyanogenmod.themes.provider.R;
+import org.cyanogenmod.cmte.provider.R;
 
 public class SystemUiPreviewGenerator {
     public static final String SYSTEMUI_PACKAGE = "com.android.systemui";

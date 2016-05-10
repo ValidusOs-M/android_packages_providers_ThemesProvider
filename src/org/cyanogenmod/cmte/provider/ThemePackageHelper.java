@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider;
+package org.cyanogenmod.cmte.provider;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -35,7 +35,7 @@ import android.provider.ThemesContract.MixnMatchColumns;
 import android.provider.ThemesContract.ThemesColumns;
 import android.provider.ThemesContract.ThemesColumns.InstallState;
 import android.util.Log;
-import org.cyanogenmod.themes.provider.util.ProviderUtils;
+import org.cyanogenmod.cmte.provider.util.ProviderUtils;
 
 import java.io.IOException;
 import java.util.Collections;

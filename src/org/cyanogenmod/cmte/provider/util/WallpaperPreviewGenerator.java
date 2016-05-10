@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider.util;
+package org.cyanogenmod.cmte.provider.util;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -26,7 +26,7 @@ import android.graphics.Bitmap;
 import android.provider.ThemesContract.PreviewColumns;
 import android.text.TextUtils;
 
-import org.cyanogenmod.themes.provider.R;
+import org.cyanogenmod.cmte.provider.R;
 
 import java.io.File;
 import java.io.IOException;

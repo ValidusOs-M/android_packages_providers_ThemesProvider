@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider;
+package org.cyanogenmod.cmte.provider;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.util.Log;
-import org.cyanogenmod.themes.provider.util.ProviderUtils;
+import org.cyanogenmod.cmte.provider.util.ProviderUtils;
 
 public class AppReceiver extends BroadcastReceiver {
     public final static String TAG = AppReceiver.class.getName();

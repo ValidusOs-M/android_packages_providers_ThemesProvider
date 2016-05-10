@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.themes.provider.view;
+package org.cyanogenmod.cmte.provider.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,7 +33,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-import static org.cyanogenmod.themes.provider.util.SystemUiPreviewGenerator.SYSTEMUI_PACKAGE;
+import static org.cyanogenmod.cmte.provider.util.SystemUiPreviewGenerator.SYSTEMUI_PACKAGE;
 
 public class BatteryMeterView extends View {
     private static final String TAG = BatteryMeterView.class.getSimpleName();

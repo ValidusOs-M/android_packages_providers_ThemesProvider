@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider.util;
+package org.cyanogenmod.cmte.provider.util;
 
 import android.app.ActivityManager;
 import android.app.ComposedIconInfo;

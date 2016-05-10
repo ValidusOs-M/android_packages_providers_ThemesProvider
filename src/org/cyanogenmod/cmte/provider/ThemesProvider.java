@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider;
+package org.cyanogenmod.cmte.provider;
 
 
 import android.content.ContentProvider;
@@ -43,11 +43,11 @@ import android.provider.ThemesContract.PreviewColumns;
 import android.provider.ThemesContract.ThemesColumns;
 import android.util.Log;
 
-import org.cyanogenmod.themes.provider.ThemesOpenHelper.MixnMatchTable;
-import org.cyanogenmod.themes.provider.ThemesOpenHelper.PreviewsTable;
-import org.cyanogenmod.themes.provider.ThemesOpenHelper.ThemesTable;
-import org.cyanogenmod.themes.provider.util.PreviewUtils;
-import org.cyanogenmod.themes.provider.util.ProviderUtils;
+import org.cyanogenmod.cmte.provider.ThemesOpenHelper.MixnMatchTable;
+import org.cyanogenmod.cmte.provider.ThemesOpenHelper.PreviewsTable;
+import org.cyanogenmod.cmte.provider.ThemesOpenHelper.ThemesTable;
+import org.cyanogenmod.cmte.provider.util.PreviewUtils;
+import org.cyanogenmod.cmte.provider.util.ProviderUtils;
 
 import java.io.File;
 import java.util.ArrayList;

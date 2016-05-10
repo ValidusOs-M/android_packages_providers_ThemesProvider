@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider;
+package org.cyanogenmod.cmte.provider;
 
 import android.app.IntentService;
 import android.content.ContentResolver;
@@ -30,17 +30,17 @@ import android.os.FileUtils;
 import android.provider.ThemesContract.ThemesColumns;
 import android.provider.ThemesContract.PreviewColumns;
 import android.util.Log;
-import org.cyanogenmod.themes.provider.util.BootAnimationPreviewGenerator;
-import org.cyanogenmod.themes.provider.util.IconPreviewGenerator;
-import org.cyanogenmod.themes.provider.util.IconPreviewGenerator.IconItems;
-import org.cyanogenmod.themes.provider.util.PreviewUtils;
-import org.cyanogenmod.themes.provider.util.StylePreviewGenerator;
-import org.cyanogenmod.themes.provider.util.StylePreviewGenerator.StyleItems;
-import org.cyanogenmod.themes.provider.util.SystemUiPreviewGenerator;
-import org.cyanogenmod.themes.provider.util.SystemUiPreviewGenerator.SystemUiItems;
-import org.cyanogenmod.themes.provider.util.WallpaperPreviewGenerator;
-import org.cyanogenmod.themes.provider.util.WallpaperPreviewGenerator.WallpaperItem;
-import org.cyanogenmod.themes.provider.util.WallpaperPreviewGenerator.WallpaperItems;
+import org.cyanogenmod.cmte.provider.util.BootAnimationPreviewGenerator;
+import org.cyanogenmod.cmte.provider.util.IconPreviewGenerator;
+import org.cyanogenmod.cmte.provider.util.IconPreviewGenerator.IconItems;
+import org.cyanogenmod.cmte.provider.util.PreviewUtils;
+import org.cyanogenmod.cmte.provider.util.StylePreviewGenerator;
+import org.cyanogenmod.cmte.provider.util.StylePreviewGenerator.StyleItems;
+import org.cyanogenmod.cmte.provider.util.SystemUiPreviewGenerator;
+import org.cyanogenmod.cmte.provider.util.SystemUiPreviewGenerator.SystemUiItems;
+import org.cyanogenmod.cmte.provider.util.WallpaperPreviewGenerator;
+import org.cyanogenmod.cmte.provider.util.WallpaperPreviewGenerator.WallpaperItem;
+import org.cyanogenmod.cmte.provider.util.WallpaperPreviewGenerator.WallpaperItems;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -50,8 +50,8 @@ import java.util.List;
  * Copies images from the theme APK to the local provider's cache
  */
 public class PreviewGenerationService extends IntentService {
-    public static final String ACTION_INSERT = "org.cyanogenmod.themes.provider.action.insert";
-    public static final String ACTION_UPDATE = "org.cyanogenmod.themes.provider.action.update";
+    public static final String ACTION_INSERT = "org.cyanogenmod.cmte.provider.action.insert";
+    public static final String ACTION_UPDATE = "org.cyanogenmod.cmte.provider.action.update";
     public static final String EXTRA_PKG_NAME = "extra_pkg_name";
 
     private static final String TAG = PreviewGenerationService.class.getName();

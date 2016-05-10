@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.cyanogenmod.themes.provider.util;
+package org.cyanogenmod.cmte.provider.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -22,7 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageView;
-import org.cyanogenmod.themes.provider.R;
+import org.cyanogenmod.cmte.provider.R;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
