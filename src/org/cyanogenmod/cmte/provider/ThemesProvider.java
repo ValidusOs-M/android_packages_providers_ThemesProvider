@@ -231,6 +231,7 @@ public class ThemesProvider extends ContentProvider {
          */
         mHandler.post(new Runnable() {
             public void run() {
+                PreviewUtils.ensureCorrectPreviewPermissions(getContext());
                 new VerifyInstalledThemesThread().start();
             }
         });
